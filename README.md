@@ -40,7 +40,7 @@ user_manager/
 
 ## Requisitos
 
-- Python 3.8+
+- Python 3.11
 - Django 4.2
 - Django REST Framework
 - PostgreSQL/SQLite
@@ -57,18 +57,26 @@ La forma más fácil de ejecutar el proyecto es utilizando Docker Compose, que c
 3. Ejecuta el siguiente comando en la raíz del proyecto:
 
 ```bash
-docker-compose up
+docker-compose up --build
 ```
 
 Esto iniciará:
 - Base de datos PostgreSQL
-- Backend Django (accesible en http://localhost:8000)
+- Backend Django con Python 3.11 (accesible en http://localhost:8000)
 - Frontend React (accesible en http://localhost:3000)
 
 Para crear un superusuario, ejecuta:
 
 ```bash
 docker-compose exec backend python manage.py createsuperuser
+```
+
+Si has actualizado la versión de Python o realizado cambios en los Dockerfiles, asegúrate de reconstruir las imágenes:
+
+```bash
+docker-compose down
+docker-compose build --no-cache
+docker-compose up
 ```
 
 ### Instalación Manual
@@ -128,6 +136,37 @@ La API está completamente documentada y puedes explorar todos los endpoints a t
 - **ReDoc**: `/api/redoc/` - Documentación detallada en formato legible
 - **Schema**: `/api/schema/` - Esquema OpenAPI en formato JSON
 
+#### Usando Swagger UI
+
+La documentación interactiva de Swagger te permite:
+
+1. **Explorar todos los endpoints** disponibles organizados por categorías.
+2. **Probar los endpoints** directamente desde el navegador.
+3. **Ver los esquemas de datos** para las solicitudes y respuestas.
+4. **Autenticarte** usando tu token JWT para probar endpoints protegidos.
+
+Para acceder a Swagger UI, navega a:
+```
+http://localhost:8000/api/docs/
+```
+
+Una vez en Swagger UI:
+1. Haz clic en el botón "Authorize" en la parte superior derecha.
+2. Ingresa tu JWT token con el formato: `Bearer <tu_token_de_acceso>`.
+3. Ahora puedes probar cualquier endpoint con tu sesión autenticada.
+
+#### Usando ReDoc
+
+ReDoc ofrece una documentación más limpia y fácil de leer. Es ideal para:
+- Entender la estructura general de la API
+- Leer documentación detallada de cada endpoint
+- Revisar los esquemas de datos y requisitos
+
+Para acceder a ReDoc, navega a:
+```
+http://localhost:8000/api/redoc/
+```
+
 ### Endpoints Principales
 
 - `/api/token/` - Obtener token JWT
@@ -136,6 +175,48 @@ La API está completamente documentada y puedes explorar todos los endpoints a t
 - `/api/clients/` - Gestión de clientes
 - `/api/projects/` - Gestión de proyectos
 - `/api/projects/by_status/?status=pendiente` - Filtrar proyectos por estado
+
+### Modelos de Datos
+
+La documentación completa de los modelos está disponible en Swagger, pero aquí hay un resumen:
+
+#### Usuario (User)
+```json
+{
+  "id": 1,
+  "username": "usuario1",
+  "email": "usuario@ejemplo.com"
+}
+```
+
+#### Cliente (Client)
+```json
+{
+  "id": 1,
+  "name": "Cliente Ejemplo",
+  "email": "cliente@ejemplo.com",
+  "phone": "+34123456789",
+  "user": 1,
+  "created_at": "2023-04-15T10:30:00Z",
+  "updated_at": "2023-04-15T10:30:00Z"
+}
+```
+
+#### Proyecto (Project)
+```json
+{
+  "id": 1,
+  "name": "Proyecto Ejemplo",
+  "description": "Descripción del proyecto",
+  "status": "en_progreso",
+  "client": 1,
+  "client_name": "Cliente Ejemplo",
+  "start_date": "2023-04-15",
+  "end_date": "2023-05-15",
+  "created_at": "2023-04-15T10:30:00Z",
+  "updated_at": "2023-04-15T10:30:00Z"
+}
+```
 
 ## Autenticación
 

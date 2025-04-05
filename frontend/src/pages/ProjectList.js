@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Table, Button, Card, Alert, Badge, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { projectService } from '../services/api';
@@ -9,7 +9,7 @@ const ProjectList = () => {
   const [error, setError] = useState('');
   const [filterStatus, setFilterStatus] = useState('');
 
-  const fetchProjects = async () => {
+  const fetchProjects = useCallback(async () => {
     try {
       setLoading(true);
       let data;
@@ -28,11 +28,11 @@ const ProjectList = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filterStatus]);
 
   useEffect(() => {
     fetchProjects();
-  }, [filterStatus]);
+  }, [fetchProjects]);
 
   const handleDelete = async (id) => {
     if (window.confirm('¿Estás seguro de eliminar este proyecto?')) {
