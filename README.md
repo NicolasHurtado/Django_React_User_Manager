@@ -70,7 +70,6 @@ docker-compose up --build
 Esto iniciará:
 - Base de datos PostgreSQL
 - Backend Django con Python 3.11 (accesible en http://localhost:8000)
-- 
 - Frontend React (accesible en http://localhost:3000)
   ![image](https://github.com/user-attachments/assets/299ea71a-753f-4edf-ac8d-706499935bdb)
 
