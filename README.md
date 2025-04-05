@@ -70,7 +70,10 @@ docker-compose up --build
 Esto iniciará:
 - Base de datos PostgreSQL
 - Backend Django con Python 3.11 (accesible en http://localhost:8000)
+- 
 - Frontend React (accesible en http://localhost:3000)
+  ![image](https://github.com/user-attachments/assets/299ea71a-753f-4edf-ac8d-706499935bdb)
+
 
 Para crear un superusuario, ejecuta:
 
@@ -156,6 +159,8 @@ Para acceder a Swagger UI, navega a:
 ```
 http://localhost:8000/api/docs/
 ```
+![image](https://github.com/user-attachments/assets/e2130fa9-c230-44d9-8290-350d42cb17ce)
+
 
 Una vez en Swagger UI:
 1. Haz clic en el botón "Authorize" en la parte superior derecha.
