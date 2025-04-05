@@ -40,11 +40,18 @@ user_manager/
 
 ## Requisitos
 
+### Para ejecutar con Docker (Recomendado)
+- Docker
+- Docker Compose
+
+### Para instalación manual
 - Python 3.11
-- Django 4.2
-- Django REST Framework
-- PostgreSQL/SQLite
-- Node.js y npm (para el frontend)
+- Node.js y npm
+- PostgreSQL (opcional, también puede usar SQLite)
+- Dependencias:
+  - Django 4.2
+  - Django REST Framework
+  - Otras bibliotecas listadas en `backend/requirements.txt`
 
 ## Instalación y Ejecución
 
@@ -71,7 +78,7 @@ Para crear un superusuario, ejecuta:
 docker-compose exec backend python manage.py createsuperuser
 ```
 
-Si has actualizado la versión de Python o realizado cambios en los Dockerfiles, asegúrate de reconstruir las imágenes:
+Para reconstruir las imagenes:
 
 ```bash
 docker-compose down
