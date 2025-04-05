@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.status-badge {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.5rem;
+}
+
+.status-pendiente {
+  background-color: #ffc107;
+}
+
+.status-en_progreso {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.status-completado {
+  background-color: #198754;
+  color: white;
+} 
